@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: skedler.skedler.com
+  version: v1alpha1
+  kind: Skedler
+  chart: helm-charts/skedler
+#+kubebuilder:scaffold:watch

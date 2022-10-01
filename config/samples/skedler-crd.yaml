@@ -1,0 +1,120 @@
+apiVersion: skedler.skedler.com/v1alpha1
+kind: Skedler
+metadata:
+  name: skedler-sample
+spec:
+  # Default values copied from <project_dir>/helm-charts/skedler/values.yaml
+  affinity: {}
+  autoscaling:
+    enabled: false
+    maxReplicas: 100
+    minReplicas: 1
+    targetCPUUtilizationPercentage: 80
+  fullnameOverride: ""
+  image:
+    pullPolicy: Always
+    repository: skedler/reports:latest
+    tag: ""
+  imagePullSecrets: []
+  ingress:
+    annotations: {}
+    className: ""
+    enabled: false
+    hosts:
+    - host: chart-example.local
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+    tls: []
+  nameOverride: ""
+  nodeSelector: {}
+  podAnnotations: {}
+  podSecurityContext: {}
+  replicaCount: 1
+  resources: {}
+  securityContext: {}
+  service:
+    port: 3005
+    type: LoadBalancer
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: ""
+  tolerations: []
+
+  # Skedler default username and password. You can change username & password for your convenient to create skedler account.
+  skedlerUsername: "admin@skedler.com"
+  skedlerPassword: "admin"
+
+  # The port which skedler need to run redis
+  redisPort: 6379
+
+  # The public facing host name or IP address used to access Skdler from a browser
+  host: "127.0.0.1"
+  # Protocol (http, https)
+  protocol: "http"
+
+  # T0 activate & persist the license
+  licenseEmail: ""
+  licenseKey: ""
+
+  # Org Provisioning
+  orgs: []
+  # orgs: 
+  #   # name of the org to create in Skedler. Required
+  #   - name: First Org
+  #   - name: Second Org
+
+  # Datasources Provisioning
+  datasources: []
+  # datasources:
+  #     # name of the datasource. Required
+  #   - name: "Grafana-1"
+  #   # In org where skedler is going to create the datasource, default is 'Main Org'. You can change it as your org name, If it is already created in skedler
+  #     org_name: "Main Org"
+  #     # datasource type. Required
+  #     type: "grafana"
+  #     data:
+  #       grafana_url: "http://localhost:4000"
+  #       auth_enabled: true
+  #       # Authentication type. Deafult is "basicAuth". You can change it as "apiKey" if you are using apikey for authentication
+  #       auth_type: "basicAuth"
+  #       auth_credentials:
+  #         grafana_username: "admin"
+  #         grafana_password: "admin"
+  #         apiKey: ""
+  #       grafana_ssl:
+  #         grafana_ssl_enabled: false
+  #         ssl_certificate: "/path/to/ssl_certificate"
+  #         ssl_key: "/path/to/ssl_key"
+  #         ssl_certificate_authorities: "/path/to/ca_certificate"
+
+  # Notifications Provisioning
+  notifications: []
+  # notifications:
+  #     # name of the notification channel. Required
+  #   - name: "Mail-1"
+  #     # In org where skedler is going to create the notification channel, default is 'Main Org'. You can change it as your org name, If it is already created in skedler
+  #     org_name: "Main Org"
+  #     type: "mail"
+  #     config:
+  #       # Supported services are "Gmail","Outlook","SES","SES-US-EAST-1","SES-EU-EAST-1","SES-US-WEST-2","Others(Sendgrid)","Others"
+  #       service: "Others(Sendgrid)"
+  #       host: "smtp.xxxxx.net"
+  #       port: 587
+  #       username: ""
+  #       password: ""
+  #       senderEmail: "" 
+  #       adminMail: 
+  #       ssl: false
+        
+  #     # name of the notification channel. Required
+  #   - name: "Slack-1"
+  #     # In org where skedler is going to create the notification channel, default is 'Main Org'. You can change it as your org name, If it is already created in skedler
+  #     org_name: "Main Org"
+  #     type: "slack"
+  #     config:
+  #       token: "xxxxx-xxxxxx-xxxxxx-xxxxx"
+  #       admin: "@xxxxx"
+
+  
